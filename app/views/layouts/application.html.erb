@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Shopigram</title>
+  <%= stylesheet_link_tag :all %>
+  <%= csrf_meta_tag %>
+    <style type="text/css">
+      body {padding-top: 60px;}
+      .myClass {opacity: .9;}
+      .myClass:hover{opacity: 1.0;}
+      .fancybox-title-float-wrap .child{font-size:14px;}
+      .linkClick{color:green;}
+      .linkClick:hover{color:red; cursor:pointer;}
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+  <script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.4"></script>
+
+  <!-- Optionally add helpers - button, thumbnail and/or media -->
+  <link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+  <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+  <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.5"></script>
+
+  <link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+  <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+  <script type="text/javascript" src="/javascripts/quantize.js"></script>
+  <script type="text/javascript" src="/javascripts/color-thief.js"></script>
+
+</head>
+<body>
+
+<div class="topbar">
+      <div class="fill">
+      <div class="container fixed">
+        <h3><a class="logo" href="#">
+          <img style="width: 150px; height:auto; margin-right:20px;" src="/images/shopifylogo.png" /><span></span>
+        </a></h3>
+      </div>
+</div>
+    </div>
+
+<div class="container">
+<%= yield %>
+
+<footer>
+  <p>&copy; Andy Oliver for Shopify</p>
+</footer>
+</div> <!-- /container -->
+
+</body>
+</html>

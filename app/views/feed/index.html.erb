@@ -1,0 +1,68 @@
+<h2 style="margin-top:10px;margin-bottom:10px;">Choose a theme inspiration...</h2>
+<% @recent_media_items.each_with_index do |media, index| %>
+<a class="fancybox" title="Are you sure you want to use this as your Shopify theme inspiration? &nbsp;&nbsp;<a class='linkClick' href='javascript:generateTheme(<%=index%>);'>YES!! LET'S DO IT!</a>" rel="group" href="<%= media.images.standard_resolution.url%>"><img id="<%=index%>" label="<%= media.images.standard_resolution.url%>" class="myClass" src="<%= media.images.thumbnail.url%>" /></a>
+<% end%>
+
+<form id="themeForm" action="/assets/generateTheme">
+	<input type="hidden" name="photoURL" id="photoURL" />
+	<input type="hidden" name="dominantColor" id="dominantColor" />
+	<input type="hidden" name="otherColors" id="otherColors" />
+</form>
+
+<img id="srcimg" src="" style="display:none;" />
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+
+	function generateTheme(imageIndex) {
+		var myImage = $('#' + imageIndex);
+		//var dominantColor = getDominantColor(myImage);
+		//var paletteArray = createPalette(myImage, 10); // 2nd argument sets # of colors in palette
+
+		var getURL='/assets/persistImage?myurl=' + $('#' + imageIndex).attr('label');
+
+		$.get(getURL, function(data) {
+  			var imageLocation = '/' + data;
+  			$("#srcimg").attr("src", imageLocation);
+  			$("#photoURL").val(imageLocation);
+			$("#srcimg").bind('load', function (event) {
+				var $image = $(event.target);
+        
+  				//location.href = imageLocation;
+				var dominantColor = getDominantColor($image);
+				$("#dominantColor").val(rgbToHex(dominantColor[0], dominantColor[1], dominantColor[2]));
+				
+				var paletteArray = createPalette($image, 5); // 2nd argument sets # of colors in palette
+				var hexValues = '';
+
+				for(var i=0; i<paletteArray.length; i++) {
+					var rgbColor = paletteArray[i];
+
+					if (i != 0) {
+						hexValues = hexValues + ",";
+					}
+					
+					hexValues = hexValues + rgbToHex(rgbColor[0], rgbColor[1], rgbColor[2]);
+				}
+
+				$("#otherColors").val(hexValues);
+				$("#themeForm").submit();
+			});
+
+				
+		});
+
+	}
+
+	function componentToHex(c) {
+    	var hex = c.toString(16);
+    	return hex.length == 1 ? "0" + hex : hex;
+	}
+
+	function rgbToHex(r, g, b) {
+    	return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+	}
+
+</script>
