@@ -1,3 +1,23 @@
 <br/>
 <h2>Your Shopify Theme is ready to download! Can you believe it? Crazy.</h1>
-<h3><a href="#">Download here</a></h3>
+<h3><a href="<%=@downloadurl%>">Download here</a> <span style="margin-left:30px;"><a href="/">Not happy with your theme? Try again!</a></span></h3>
+
+<div style="margin-top: 10px;">
+<div style="position:relative; float: left; clear:both;">	
+	<img src="<%=@imageurl%>" />
+<div>
+
+<div style="position:relative; float:left; height: 100px;">
+	<% colorArray = @otherColors.split(',')
+		colorArray.each_with_index do |myColor, index| 
+			colorItem = colorArray[colorArray.length - index - 1]
+			%>
+		<div style="width:50px; height: 50px; background-color:<%=colorItem%>; border: 1px solid black;position:relative; float:right;margin-right:10px; margin-top: 5px;">&nbsp;</div>
+	<% end %>
+
+	<div style="width:50px; height: 50px; background-color:<%=@dominantColor%>; border: 1px solid black; margin-right:10px; position:relative; float:right; margin-top: 5px;">&nbsp;</div>
+
+	<div style="clear:both;"></div>
+</div>
+
+</div>

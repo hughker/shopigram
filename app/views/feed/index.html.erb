@@ -34,7 +34,7 @@
 				var dominantColor = getDominantColor($image);
 				$("#dominantColor").val(rgbToHex(dominantColor[0], dominantColor[1], dominantColor[2]));
 				
-				var paletteArray = createPalette($image, 5); // 2nd argument sets # of colors in palette
+				var paletteArray = createPalette($image, 10); // 2nd argument sets # of colors in palette
 				var hexValues = '';
 
 				for(var i=0; i<paletteArray.length; i++) {
