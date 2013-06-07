@@ -1,0 +1,25 @@
+<html>
+<head>
+	<title>Shopigram</title>
+	<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+</head>
+<body>
+	<div class="shopigram-business-card">
+		<h1>SHOPIGRAM</h1>
+		<p>Finally you can build a Shopify theme inspired by your lunch.</p>
+		<p><a id="my-link" href="javascript:letsStart();">Shall we get started?</p>
+	</div>
+	<script>
+		$(document).ready(function() {
+			$(".shopigram-business-card").delay(500).fadeIn();
+		});	
+
+		function letsStart() {
+			$(".shopigram-business-card").fadeOut("slow");
+			location.href="session/connect";
+		}
+	</script>	
+</body>
+</html>

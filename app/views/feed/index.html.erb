@@ -1,21 +1,39 @@
-<h2 style="margin-top:10px;margin-bottom:10px;">Choose a theme inspiration...</h2>
-<% @recent_media_items.each_with_index do |media, index| %>
-<a class="fancybox" title="Are you sure you want to use this as your Shopify theme inspiration? &nbsp;&nbsp;<a class='linkClick' href='javascript:generateTheme(<%=index%>);'>YES!! LET'S DO IT!</a>" rel="group" href="<%= media.images.standard_resolution.url%>"><img id="<%=index%>" label="<%= media.images.standard_resolution.url%>" class="myClass" src="<%= media.images.thumbnail.url%>" /></a>
-<% end%>
+<div id="feed-loading" class="loading">
+	<h2 class="align-center">Please wait while we load the photos of your lunch...
+		<p><img class="spinner" src="/images/ajax-loader.gif" /></p>
+	</h2>
+</div>	
+
+
+<div id="results">
+</div>	
 
 <form id="themeForm" action="/assets/generateTheme">
 	<input type="hidden" name="photoURL" id="photoURL" />
 	<input type="hidden" name="otherColors" id="otherColors" />
+	<img id="srcimg" src="" style="display:none;" />
 </form>
 
-<img id="srcimg" src="" style="display:none;" />
+<div id="theme-loading" class="loading">
+	<h2 class="align-center">Generating your theme...
+		<p><img class="spinner" src="/images/ajax-loader.gif" /></p>
+	</h2>
+</div>	
 
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".fancybox").fancybox();
+
+		$("#feed-loading").fadeIn("slow");
+		$.get('pull#results-wrapper', function(data) {
+			$("#feed-loading").fadeOut("fast");
+  			$('#results').html(data).fadeIn("slow");
+  		});
 	});
 
 	function generateTheme(imageIndex) {
+		$(".fancybox-overlay").fadeOut("fast");
+		$("#theme-loading").fadeIn("fast");
 		var myImage = $('#' + imageIndex);
 		var getURL='/assets/persistImage?myurl=' + $('#' + imageIndex).attr('label');
 

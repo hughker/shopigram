@@ -1,0 +1,6 @@
+<div id="results-wrapper">
+<h2>Choose a theme inspiration...</h2>
+<% @recent_media_items.each_with_index do |media, index| %>
+<a class="fancybox" title="Are you sure you want to use this as your Shopify theme inspiration? &nbsp;&nbsp;<a class='linkClick' href='javascript:generateTheme(<%=index%>);'>YES!! LET'S DO IT!</a>" rel="group" href="<%= media.images.standard_resolution.url%>"><img id="<%=index%>" label="<%= media.images.standard_resolution.url%>" class="myClass" src="<%= media.images.thumbnail.url%>" /></a>
+<% end%>
+</div>

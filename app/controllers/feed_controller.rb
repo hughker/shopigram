@@ -1,5 +1,9 @@
 class FeedController < ApplicationController
   def index
+
+  end
+
+  def pull
     redirect_to :controller => 'sessions', :action => 'connect' if !session[:access_token] 
 
     client = Instagram.client(:access_token => session[:access_token])

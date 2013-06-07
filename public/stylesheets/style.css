@@ -1,0 +1,25 @@
+html { 
+  	background: url(../images/boutique.jpg) no-repeat center center fixed; 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+  	background-color:#000;
+ }
+.shopigram-business-card{position:relative; width: 400px; margin-left:auto; margin-right:auto;text-align: center; background-color:#FFF; color:#333;opacity: .9; padding:30px;top: 30%; display:none;}
+.shopigram-business-card h1{font-size: 40px;margin-bottom:15px;}
+.shopigram-business-card p{font-size:18px;}
+.shopigram-business-card a{text-decoration:none;}
+body {padding-top: 60px;font-family: "ProximaNovaLight","Helvetica Neue",Helvetica,Arial,sans-serif;}
+.myClass {opacity: .9;}
+.myClass:hover{opacity: 1.0;}
+.fancybox-title-float-wrap .child{font-size:24px;}
+.linkClick{color:green;}
+.linkClick:hover{color:red; cursor:pointer;}
+#results{padding-left: 50px; padding-right:50px;width:920px;min-height:100%; padding-top:10px; padding-bottom:10px;display:none;}
+h1,h2{margin-top:10px;margin-bottom:10px;font-family: "ProximaNovaRegular","Helvetica Neue",Helvetica,Arial,sans-serif;}
+.align-center{text-align:center;}
+.loading{display:none;background-color: #FFF;z-index:100000; padding-left: 50px; padding:50px; width: 650px;top:35%; margin-left:auto; margin-right:auto; margin-top:300px;opacity: .9; margin-bottom:100px;}
+.spinner{margin-left:20px;margin-top:20px;}
+#results-wrapper{position:absolute; width: 920px; padding:50px; padding-top: 75px; background-color:#FFF; top: 0px;}
+a{color: #479ccf;}
