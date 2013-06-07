@@ -241,7 +241,7 @@ em { font-style: italic; }
 hr.divider { margin: 15px 0; background: {{ settings.border_color }}; height: 1px; border: 0; }
 
 /* 2.2 - Grid System */
-.wrapper { width: 996px; margin: 0 auto; padding: 0 15px; background: {{ settings.shop_bg_color_content_area }}; }
+.wrapper { width: 996px; margin: 0 auto; padding: 0 10px; background: {{ settings.shop_bg_color_content_area }}; }
 {% if settings.shop_bg_color_content_transparent %}
 .wrapper { background: transparent; }
 {% endif %}
@@ -262,8 +262,8 @@ hr.divider { margin: 15px 0; background: {{ settings.border_color }}; height: 1p
 
 .toolbar { width: 996px; margin: 0 auto; }
 footer { width: 996px; margin: 0 auto; }
-.row { margin: 0 0 30px 0; }
-.span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12 { display: block; float: left; margin: 0 15px; }
+.row { margin: 0 0 10px 0; }
+.span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12 { display: block; float: left; margin: 0 10px; }
 .inner-left { margin-left: 0px !important; }
 .inner-right { margin-right: 0px !important; }
 .span1 { width: 53px; }
@@ -753,3 +753,37 @@ ul.tabs:before, ul.tabs:after { content: '\0020'; display: block; overflow: hidd
 ul.tabs:after { clear: both; }
 ul.tabs { zoom: 1; }
 #tab1,#tab2,#tab3 { list-style:none; }
+
+
+
+/* 6.3 - Polaroids */
+ul.polaroids { position: absolute;right: 0;z-index: 10000;margin-right: 30px;margin-top: 20px;}
+ul.polaroids li { display: inline; }
+ul.polaroids a { background: #fff; display: inline; float: left; margin: 0 0 27px 30px; width: auto; padding: 10px 10px 15px; text-align: center; font-family: "Marker Felt", sans-serif; text-decoration: none; color: #333; font-size: 18px; -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25); -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25); -webkit-transform: rotate(-2deg); -webkit-transition: -webkit-transform .15s linear; -moz-transform: rotate(-2deg); }
+ul.polaroids img { display: block; width: 250px; margin-bottom: 12px; }
+ul.polaroids a:after { content: attr(title); }
+		
+ul.polaroids li:nth-child(even) a { -webkit-transform: rotate(2deg);  -moz-transform: rotate(2deg); }
+ul.polaroids li:nth-child(3n) a { -webkit-transform: none; position: relative; top: -5px;  -moz-transform: none; }
+ul.polaroids li:nth-child(5n) a { -webkit-transform: rotate(5deg); position: relative; right: 5px;  -moz-transform: rotate(5deg); }
+ul.polaroids li:nth-child(8n) a { position: relative; right: 5px; top: 8px; }
+ul.polaroids li:nth-child(11n) a { position: relative; left: -5px; top: 3px; }
+	
+ul.polaroids li.messy a { margin-top: -375px; margin-left: 160px; -webkit-transform: rotate(-5deg); -moz-transform: rotate(-5deg); }
+ul.polaroids li a:hover { -webkit-transform: scale(1.25); -moz-transform: scale(1.25); -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5); -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5); position: relative; z-index: 5; }
+
+/* shopigram stuff */
+.tile-wrapper{position:relative;height:625px;margin-bottom: 20px;}
+.big-image-wrapper{margin-left: 10px; margin-right: 10px;}
+.large-image{max-width: 628px; height:auto; margin-bottom: 10px;}
+.front-page-description{position:absolute; top: 345px; background-color: #FFF; opacity:.75; width: 608px; padding: 5px; height: 35px; font-weight: bold; font-size: 18px;padding-top:22px; padding-left: 15px;}
+.top-right-box{color:{{ settings.top-right-box-text }};background-color: {{ settings.top-right-box-background}};position: absolute;width: 325px;padding-right: 0px;margin-right: 20px;height: 188px;right: 0;top: 0;}
+.middle-right-box{color:{{ settings.bottom-right-box-text }}; background-color: {{ settings.middle-right-box-background }}; position: absolute; width: 300px; padding-right: 0px;margin-right: 45px;height: 200px;right: 0;top: 202px;}
+.bottom-left-box{background-color:{{ settings.bottom-left-box-background }}; width: 333px; height: 198px;margin-right: 5px;}
+.bottom-right-box{background-color:{{ settings.bottom-right-box-background }}; width: 580px; height: 169px; color:{{ settings.bottom-right-box-text }}; padding: 20px; padding-top: 35px;}
+.tile-collection-link{color:{{ settings.title-collection-text }};font-size: 30px; margin-right: 100px; margin-top:20px; width: 150px;}
+.with-background{color:{{ settings.welcome-area-text }};background-color:{{ settings.welcome-area-background }};padding: 15px; width: 938px; margin-top: 13px;}
+.header-background{background-color:{{ settings.header-background }};margin-top: 10px;}
+.logo h1 a{padding-left: 20px;color:{{ settings.header-background-text }};}
+nav > ul > li > a {color:{{ settings.header-background-text }};font-size: 18px;line-height: 48px;font-weight: 600;text-transform: none;}
+nav > ul > li > a.current {color: #999;}

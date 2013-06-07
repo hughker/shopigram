@@ -47,6 +47,15 @@
 
 <body>
   
+   <ul class="polaroids">
+		<li>
+            <a href="http://localhost:3000" title="Created by Shopigram!">
+				<img src="{{ 'instagram.png' | asset_url }}" alt="Created by Shopigram!" />
+			</a>
+		</li>
+  </ul>
+      
+  
   <!-- Begin toolbar -->
   <div class="toolbar-wrapper">
     <div class="toolbar clearfix">
@@ -80,7 +89,7 @@
       <!-- Begin right navigation -->
       {% if settings.navigation_alignment == "right" %}
       <div class="row" id="header">
-        <div class="span12 border-bottom">
+        <div class="span12 border-bottom header-background">
           <div class="span3 inner-left">
             <div class="logo">
               {% if settings.use_logo %}

@@ -1,0 +1,83 @@
+<div class="tile-wrapper" style="">
+{% if collections[settings.frontpage_collection].products.count > 0 %}
+{% assign product = collections[settings.frontpage_collection].products[0] %}
+
+
+<div class="big-image-wrapper">
+  <a href="{{product.url}}"><img class="large-image" src="{{ product.featured_image | product_img_url: 'original' }}" alt="{{ product.title | escape  }}" /></a>
+
+  <div class="front-page-description">
+    {{product.title}} - {{ product.price | money }}
+  </div>        
+   
+</div>
+<div class="top-right-box">
+  &nbsp;
+</div>
+  <div class="middle-right-box">
+  {% if collections[settings.frontpage_collection].products.count > 1 %}
+    {% assign product2 = collections[settings.frontpage_collection].products[1] %}
+    <a href="{{product2.url}}"><img style="max-width: 326px; height:auto;" src="{{ product2.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape  }}" /></a>
+
+    {% else %}
+      &nbsp;
+    {% endif %}
+    
+</div>
+  {% endif %}
+
+{% if settings.show_fp_images %}
+<!-- Begin promo images -->
+<div class="row" id="fp-images" style="margin-bottom:25px">
+  <div class="span4 bottom-left-box">
+    {% if collections[settings.frontpage_collection].products.count > 2 %}
+    {% assign product3 = collections[settings.frontpage_collection].products[2] %}
+    <a href="{{product3.url}}"><img style="max-width: 334px; height:auto;" src="{{ product3.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape  }}" /></a>
+    {% else %}
+      &nbsp;
+    {% endif %}
+  </div>
+  
+  <div class="span4 bottom-right-box">
+    <a href="{{ settings[fp_link] }}">
+      {% if collections.count > 0 %}
+        {% for collection in collections %}
+          {% if collection.title != 'Frontpage' %}
+            <p><a class="tile-collection-link" href="{{collection.url}}">{{collection.title}}</a></p>
+          {% endif %} 
+      {% endfor %}
+      {% endif %}
+    </a>
+  </div>
+</div>
+<!-- End promo images -->
+{% endif %}
+</div>
+
+{% if settings.homepage != blank %}
+<!-- Begin intro -->
+<div class="span12 p20" style="margin-bottom: 15px !important;">
+  <div class="intro clearfix with-background">
+    <h2>{{ pages[settings.homepage].title }}</h2>
+    <h3>{{ pages[settings.homepage].content }}</h3>
+  </div>
+</div>
+<!-- End intro -->
+{% endif %}
+      
+<div class="products">
+  {% for product in collections[settings.frontpage_collection].products %}
+  {% include 'product-loop' with settings.frontpage_collection %}
+  {% endfor %}
+</div>
+
+{% if settings.show_collections and settings.frontpage_collections != '' and settings.frontpage_collections != 'main-menu' and linklists[settings.frontpage_collections].links.size > 0 %}
+<div class="products">
+  {% for link in linklists[settings.frontpage_collections].links %}
+  {% if link.type == 'collection_link' %}
+    {% assign collection = link.object %}
+    {% include 'collection-loop' %}
+  {% endif %}
+  {% endfor %}
+</div>
+{% endif %}

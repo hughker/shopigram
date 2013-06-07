@@ -25,6 +25,7 @@ gem 'sqlite3'
 
 gem 'instagram'
 gem 'rubyzip'
+gem 'colorist'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

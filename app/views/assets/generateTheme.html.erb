@@ -8,16 +8,13 @@
 <div>
 
 <div style="position:relative; float:left; height: 100px;">
-	<% colorArray = @otherColors.split(',')
-		colorArray.each_with_index do |myColor, index| 
-			colorItem = colorArray[colorArray.length - index - 1]
-			%>
+	<% @otherColors.each_with_index do |colorItem, index| 
+			colorItem = @otherColors[@otherColors.length - index - 1]
+	%>
 		<div style="width:50px; height: 50px; background-color:<%=colorItem%>; border: 1px solid black;position:relative; float:right;margin-right:10px; margin-top: 5px;">&nbsp;</div>
 	<% end %>
 
-	<div style="width:50px; height: 50px; background-color:<%=@dominantColor%>; border: 1px solid black; margin-right:10px; position:relative; float:right; margin-top: 5px;">&nbsp;</div>
-
-	<div style="clear:both;"></div>
+<div style="clear:both;"></div>
 </div>
 
 </div>

@@ -5,7 +5,6 @@
 
 <form id="themeForm" action="/assets/generateTheme">
 	<input type="hidden" name="photoURL" id="photoURL" />
-	<input type="hidden" name="dominantColor" id="dominantColor" />
 	<input type="hidden" name="otherColors" id="otherColors" />
 </form>
 
@@ -18,9 +17,6 @@
 
 	function generateTheme(imageIndex) {
 		var myImage = $('#' + imageIndex);
-		//var dominantColor = getDominantColor(myImage);
-		//var paletteArray = createPalette(myImage, 10); // 2nd argument sets # of colors in palette
-
 		var getURL='/assets/persistImage?myurl=' + $('#' + imageIndex).attr('label');
 
 		$.get(getURL, function(data) {
@@ -29,31 +25,11 @@
   			$("#photoURL").val(imageLocation);
 			$("#srcimg").bind('load', function (event) {
 				var $image = $(event.target);
-        
-  				//location.href = imageLocation;
-				var dominantColor = getDominantColor($image);
-				$("#dominantColor").val(rgbToHex(dominantColor[0], dominantColor[1], dominantColor[2]));
-				
-				var paletteArray = createPalette($image, 10); // 2nd argument sets # of colors in palette
-				var hexValues = '';
-
-				for(var i=0; i<paletteArray.length; i++) {
-					var rgbColor = paletteArray[i];
-
-					if (i != 0) {
-						hexValues = hexValues + ",";
-					}
-					
-					hexValues = hexValues + rgbToHex(rgbColor[0], rgbColor[1], rgbColor[2]);
-				}
-
-				$("#otherColors").val(hexValues);
+        		var paletteArray = createPalette($image, 10); // 2nd argument sets # of colors in palette
+				$("#otherColors").val(paletteArray);
 				$("#themeForm").submit();
 			});
-
-				
 		});
-
 	}
 
 	function componentToHex(c) {
